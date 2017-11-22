@@ -1097,7 +1097,7 @@ function goBack() {
 	$("#cancelBtntargetF").click(function() {
 		console.log("cancel button clicked");
 		tracker = ga.getAll()[0];
-		tracker.send('event', 'button', 'click');
+		tracker.send('event', 'cancel', 'click');
 	});
 	</script>
 
