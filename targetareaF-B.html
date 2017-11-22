@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110108504-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-110108504-1');
+</script>
+
 	<title>limber</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -347,7 +357,7 @@ function goBack() {
 				<a class = "aflex" xlink:href = "flexibility.html"> </a>
 				<a class = "apain" xlink:href = "images/feet.png"> </a>
 			</a>
-			 
+
 
 			<!-- rotate body -->
 			<a onclick = "rotate()">
@@ -619,7 +629,7 @@ function goBack() {
 			-->
 			</svg>
 	</div>
-	
+
 <!-- back body back body back body back body back body back body back body back body back body back body back body back body back body -->
 	<div class="container" id="bodyParts2" style = "display:none">
 		<svg
@@ -1033,7 +1043,7 @@ function goBack() {
 				 x="87.740204"
 				 y="242.15939" />
 			</a>
-			
+
 
 			<text
 				 xml:space="preserve"
@@ -1058,7 +1068,7 @@ function goBack() {
 				   y="251.84363"
 				   style="stroke-width:0.26458332">BODY</tspan></text>
 			<script>
-			
+
 				function rotate(){
 					var x = document.getElementById("bodyParts");
 					var y = document.getElementById("bodyParts2");
@@ -1072,7 +1082,7 @@ function goBack() {
 						document.getElementById("View Upper Back Exercises?").id = "View Chest Exercises?";
 						document.getElementById("View Lower Back Exercises?").id = "View Abdominal Exercises?";
 						document.getElementById("View Glute Exercises?").id = "View Hip Exercises?";
-						
+
 						x.style.display = "block";
 						y.style.display = "none";
 					}
@@ -1110,13 +1120,13 @@ function goBack() {
 					$('svg').find(".testbody").find(".anatomy").css({fill: "#fbc02d"});
 				})
 
-				function openModal(param) 
+				function openModal(param)
 				{
 					var idtext = $(param).attr('id');
 					var bodyid = String(idtext.substr(0,idtext.length-1));
 					console.log(bodyid);
 					$('.modal-title').text( $(param).attr('id'));
-					$('#str').attr( "href", $(document.getElementById(bodyid)).find('.astr').attr("xlink:href"))	
+					$('#str').attr( "href", $(document.getElementById(bodyid)).find('.astr').attr("xlink:href"))
 					$('.modal').modal('show');
 					$(document.getElementById(bodyid)).find('.anatomy').css({fill : "#A5E9B4"});
 				}
