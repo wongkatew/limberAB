@@ -55,6 +55,13 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 </head>
 <body>
 
+	<script>
+	$("cancelBtntargetF").click(function() {
+		console.log("cancel button clicked");
+		tracker.send('event', 'button', 'click');
+	});
+	</script>
+
 <!-- modal -->
 <div class="modal fade" id ="bodymodal">
   <div class="modal-dialog" role="document">

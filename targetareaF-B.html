@@ -60,6 +60,12 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 	</style>
 </head>
+<script>
+$("cancelBtntargetF").click(function() {
+	console.log("cancel button clicked");
+	tracker.send('event', 'button', 'click');
+});
+</script>
 <body>
 
 <!-- modal -->
