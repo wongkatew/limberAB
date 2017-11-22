@@ -55,14 +55,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 </head>
 <body>
 
-	<script>
-	$("#cancelBtntargetF").click(function() {
-		console.log("cancel button clicked");
-		tracker = ga.getAll()[0];
-		tracker.send('event', 'button', 'click');
-	});
-	</script>
-
 <!-- modal -->
 <div class="modal fade" id ="bodymodal">
   <div class="modal-dialog" role="document">
@@ -88,6 +80,7 @@ function goBack() {
 	window.history.back();
 }
 </script>
+
 
 <!-- collapsible navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -1100,6 +1093,13 @@ function goBack() {
 			</script>
 			</svg>
 	</div>
+	<script>
+	$("#cancelBtntargetF").click(function() {
+		console.log("cancel button clicked");
+		tracker = ga.getAll()[0];
+		tracker.send('event', 'button', 'click');
+	});
+	</script>
 
 </body>
 
