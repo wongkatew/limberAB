@@ -59,7 +59,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	$("cancelBtntargetF").click(function() {
 		console.log("cancel button clicked");
 		tracker = ga.getAll()[0];
-		tracker.send('event', 'cancel', 'click');
+		tracker.send('event', 'button', 'click', 'Cancel');
 	});
 	</script>
 
