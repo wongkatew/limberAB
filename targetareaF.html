@@ -1094,7 +1094,7 @@ function goBack() {
 			</svg>
 	</div>
 	<script>
-	$("#cancelBtntargetF").click(function() {
+	$("#bodymodal").on('hidden', function() {
 		console.log("cancel button clicked");
 		tracker = ga.getAll()[0];
 		tracker.send('event', 'cancel', 'click');
