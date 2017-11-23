@@ -1152,7 +1152,7 @@ function goBack() {
 </div>
 
 <script>
-$("#bodymodal").on('hidden', function() {
+$("#bodymodal").on('hidden.bs.modal', function() {
 	console.log("cancel button clicked");
 	tracker = ga.getAll()[0];
 	tracker.send('event', 'cancel', 'click');
