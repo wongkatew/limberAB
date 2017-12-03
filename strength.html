@@ -10,380 +10,383 @@
 
 	gtag('config', 'UA-110108504-1');
 </script>
-	<title>limber</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
-	<script src="js/exercises.js"></script>
-	<link href="css/limberSpecific.css" rel="stylesheet"/>
-	<script>
-		var currListOfVids;
-		var bodyPart;
-		var vidP;
+<title>limber</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+<script src="js/exercises.js"></script>
+<link href="css/limberSpecific.css" rel="stylesheet"/>
+<script>
+	var currListOfVids;
+	var bodyPart;
+	var vidP;
 
-		$(document).ready(function() {
-			console.log('hello world');
+	$(document).ready(function() {
+		console.log('hello world');
 
-			var currBodPart;
-			if (localStorage.getItem("currentBodyPart") === null) {
-				currBodPart = "potato";
-			} else {
-				currBodPart = localStorage.getItem("currentBodyPart");
-			}
-
-			// compile the template
-			var source = $("#entry-template").html();
-			var template = Handlebars.compile(source);
-
-			var html;
-
-			if (currBodPart === "abs") {
-				html = template(absStrength);
-				currListOfVids = absStrength;
-				bodyPart = "Abs";
-			} else if (currBodPart === "upperArm") {
-				html = template(armsTStrength);
-				currListOfVids = armsTStrength;
-				bodyPart = "Upper Arm";
-			} else if (currBodPart === "foreArm") {
-				html = template(armsBStrength);
-				currListOfVids = armsBStrength;
-				bodyPart = "Forearm";
-			} else if (currBodPart === "upperBack") {
-				html = template(backTStrength);
-				currListOfVids = backTStrength;
-				bodyPart = "Upper Back";
-			} else if (currBodPart === "lowerBack") {
-				html = template(backBStrength);
-				currListOfVids = backBStrength;
-				bodyPart = "Lower Back";
-			} else if (currBodPart === "calves") {
-				html = template(calvesStrength);
-				currListOfVids = calvesStrength;
-				bodyPart = "Calves";
-			} else if (currBodPart === "chest") {
-				html = template(chestStrength);
-				currListOfVids = chestStrength;
-				bodyPart = "Chest";
-			} else if (currBodPart === "feet") {
-				html = template(feetStrength);
-				currListOfVids = feetStrength;
-				bodyPart = "Feet";
-			} else if (currBodPart === "glutes") {
-				html = template(glutsStrength);
-				currListOfVids = glutsStrength;
-				bodyPart = "Glutes";
-			} else if (currBodPart === "hands") {
-				html = template(handsStrength);
-				currListOfVids = handsStrength;
-				bodyPart = "Hands";
-			} else if (currBodPart === "head") {
-				html = template(headStrength);
-				currListOfVids = headStrength;
-				bodyPart = "Head";
-			} else if (currBodPart === "hips") {
-				html = template(hipsStrength);
-				currListOfVids = hipsStrength;
-				bodyPart = "Hips";
-			} else if (currBodPart === "neck") {
-				html = template(neckStrength);
-				currListOfVids = neckStrength;
-				bodyPart = "Neck";
-			} else if (currBodPart === "shoulder") {
-				html = template(shouldersStrength);
-				currListOfVids = shouldersStrength;
-				bodyPart = "Shoulders";
-			} else if (currBodPart === "thigh") {
-				html = template(thighsStrength);
-				currListOfVids = thighsStrength;
-				bodyPart = "Thighs";
-			} else {
-				alert("Uh oh: the body part we tried to read from local storage could not be read. The current body part we read was: " + currBodPart + ". Just for now, we'll show you glutes.");
-				html = template(glutsStrength);
-				currListOfVids = glutsStrength;
-				bodyPart = "Glutes";
-			}
-
-			document.getElementById("bodbod").innerHTML = "<h3 style=\"text-align:center; font-size: 20px;\">" + bodyPart + "</h3>";
-
-			$('#stuff').html(html); // THIS IS COMPLETELY NECESSARY FOR SOME REASON
-
-			if (localStorage.length >= 1) {
-				if (localStorage.getItem("listsOfSets") != null) {
-					playlists = JSON.parse(localStorage.getItem("listsOfSets"));
-				}
-				if (localStorage.getItem("historyOfVids") != null) {
-					historyVids = JSON.parse(localStorage.getItem("historyOfVids"));
-				}
-				for (var j = 0; j < currListOfVids.length; j++) {
-					// document.getElementById("dropdown" + j).innerHTML = "";
-					document.getElementById("funfun" + j).innerHTML = "";
-					// document.getElementById("funfun").innerHTML = "";
-					for (var i = 0; i < playlists.length; i++) {
-						var nameList = "<li><a href=\"#\" onclick = \"addToPlaylistExisting('"+ playlists[i].name +"', " + (JSON.stringify(currListOfVids[j])).replace(/"/g, "'") + ")\">" + playlists[i].name + "</a></li>";
-					// 	document.getElementById("dropdown" + j).innerHTML += nameList;
-						document.getElementById("funfun" + j).innerHTML += nameList;
-					}
-					// document.getElementById("funfun").innerHTML += nameList;
-				}
-			}
-		});
-
-		// so things can be read
-		Handlebars.registerHelper('json', function(context) {
-			return JSON.stringify(context);
-		});
-
-		// Close the dropdown if the user clicks outside of it
-		window.onclick = function(event) {
-		  if (!event.target.matches('.w3-button')) {
-
-				var dropdowns = document.getElementsByClassName("dropdown-content");
-				var i;
-				for (i = 0; i < dropdowns.length; i++) {
-			  	var openDropdown = dropdowns[i];
-			  	if (openDropdown.classList.contains('show')) {
-						openDropdown.classList.remove('show');
-			  	}
-				}
-		  }
-		};
-
-		/* When the user clicks on the button,
-		toggle between hiding and showing the detail content */
-		function detailFunct() {
-			var preview = document.getElementById("prev" + arguments[0].index);
-			var description = document.getElementById("description" + arguments[0].index);
-			var playButton = document.getElementById("play" + arguments[0].index);
-			// alert(arguments[0].index);
-			if (preview.style.display == "none")
-			{
-				preview.style.display = "block";
-				description.style.display = "none";
-				playButton.style.display = "block";
-			}
-			else
-			{
-				preview.style.display = "none";
-				description.style.display = "block";
-				playButton.style.display = "none";
-				historyVids.push(arguments[0]);
-				localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
-			}
-		};
-
-		function goBack() {
-			window.history.back();
-		};
-
-		function showVid()
-		{
-			var src = arguments[0].video;
-			$('#vidmodal iframe').attr('src', src);
-			$('#vidmodal').modal('show');
-
-			document.getElementById("vidTitleMod").innerHTML = "" + arguments[0].title;
-
-			// add things to the history called historyOfVids in localStorage, history in code
-			historyVids.push(arguments[0]);
-			localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
-		};
-
-		//Open modal when user clicks on "create new playlist"
-		function openModal() {
-			$('#myModal').modal('show');
-			vidP = arguments[0];
-			//If the user clicks on "create" button, then call appendList
-			var createBtn = document.getElementById("createBtn");
-			createBtn.addEventListener('click', appendList);
+		var currBodPart;
+		if (localStorage.getItem("currentBodyPart") === null) {
+			currBodPart = "potato";
+		} else {
+			currBodPart = localStorage.getItem("currentBodyPart");
 		}
 
-		function appendList() {
-			$('#myModal').modal('hide');
+		// compile the template
+		var source = $("#entry-template").html();
+		var template = Handlebars.compile(source);
 
-			var newPlaylist = "";
-			var nameP = document.getElementById('inputName').value;
-			if (nameP == "") {	// of the user presses cancel
-				return;
-			}
-			if (nameP != "") {
-				newPlaylist = nameP;
-			}
-			var fullP = {
-				"name": nameP,
-				"vids": [vidP]
-			};
-			// if (playlists.length >= 1) {
-			// 	fullP = ", " + fullP;
-			// }
-			playlists.push(fullP);
-			localStorage.setItem("listsOfSets", JSON.stringify(playlists));
-			for (var i = 0; i < currListOfVids.length; i++) {
-				var nameList = "<li><a href=\"#\" onclick = \"addToPlaylistExisting('"+ nameP +"', " + (JSON.stringify(currListOfVids[i])).replace(/"/g, "'") + ")\">" + nameP + "</a></li>";
-				document.getElementById("funfun" + i).innerHTML += nameList;
-			}
-			$('#inputName').val('');
+		var html;
 
-			historyVids.push(vidP);
+		if (currBodPart === "abs") {
+			html = template(absStrength);
+			currListOfVids = absStrength;
+			bodyPart = "Abs";
+		} else if (currBodPart === "upperArm") {
+			html = template(armsTStrength);
+			currListOfVids = armsTStrength;
+			bodyPart = "Upper Arm";
+		} else if (currBodPart === "foreArm") {
+			html = template(armsBStrength);
+			currListOfVids = armsBStrength;
+			bodyPart = "Forearm";
+		} else if (currBodPart === "upperBack") {
+			html = template(backTStrength);
+			currListOfVids = backTStrength;
+			bodyPart = "Upper Back";
+		} else if (currBodPart === "lowerBack") {
+			html = template(backBStrength);
+			currListOfVids = backBStrength;
+			bodyPart = "Lower Back";
+		} else if (currBodPart === "calves") {
+			html = template(calvesStrength);
+			currListOfVids = calvesStrength;
+			bodyPart = "Calves";
+		} else if (currBodPart === "chest") {
+			html = template(chestStrength);
+			currListOfVids = chestStrength;
+			bodyPart = "Chest";
+		} else if (currBodPart === "feet") {
+			html = template(feetStrength);
+			currListOfVids = feetStrength;
+			bodyPart = "Feet";
+		} else if (currBodPart === "glutes") {
+			html = template(glutsStrength);
+			currListOfVids = glutsStrength;
+			bodyPart = "Glutes";
+		} else if (currBodPart === "hands") {
+			html = template(handsStrength);
+			currListOfVids = handsStrength;
+			bodyPart = "Hands";
+		} else if (currBodPart === "head") {
+			html = template(headStrength);
+			currListOfVids = headStrength;
+			bodyPart = "Head";
+		} else if (currBodPart === "hips") {
+			html = template(hipsStrength);
+			currListOfVids = hipsStrength;
+			bodyPart = "Hips";
+		} else if (currBodPart === "neck") {
+			html = template(neckStrength);
+			currListOfVids = neckStrength;
+			bodyPart = "Neck";
+		} else if (currBodPart === "shoulder") {
+			html = template(shouldersStrength);
+			currListOfVids = shouldersStrength;
+			bodyPart = "Shoulders";
+		} else if (currBodPart === "thigh") {
+			html = template(thighsStrength);
+			currListOfVids = thighsStrength;
+			bodyPart = "Thighs";
+		} else {
+			alert("Uh oh: the body part we tried to read from local storage could not be read. The current body part we read was: " + currBodPart + ". Just for now, we'll show you glutes.");
+			html = template(glutsStrength);
+			currListOfVids = glutsStrength;
+			bodyPart = "Glutes";
+		}
+
+		document.getElementById("bodbod").innerHTML = "<h3 style=\"text-align:center; font-size: 20px;\">" + bodyPart + "</h3>";
+
+		$('#stuff').html(html); // THIS IS COMPLETELY NECESSARY FOR SOME REASON
+
+		if (localStorage.length >= 1) {
+			if (localStorage.getItem("listsOfSets") != null) {
+				playlists = JSON.parse(localStorage.getItem("listsOfSets"));
+			}
+			if (localStorage.getItem("historyOfVids") != null) {
+				historyVids = JSON.parse(localStorage.getItem("historyOfVids"));
+			}
+			for (var j = 0; j < currListOfVids.length; j++) {
+				// document.getElementById("dropdown" + j).innerHTML = "";
+				document.getElementById("funfun" + j).innerHTML = "";
+				// document.getElementById("funfun").innerHTML = "";
+				for (var i = 0; i < playlists.length; i++) {
+					var nameList = "<li><a href=\"#\" onclick = \"addToPlaylistExisting('"+ playlists[i].name +"', " + (JSON.stringify(currListOfVids[j])).replace(/"/g, "'") + ")\">" + playlists[i].name + "</a></li>";
+				// 	document.getElementById("dropdown" + j).innerHTML += nameList;
+					document.getElementById("funfun" + j).innerHTML += nameList;
+				}
+				// document.getElementById("funfun").innerHTML += nameList;
+			}
+		}
+	});
+
+	// so things can be read
+	Handlebars.registerHelper('json', function(context) {
+		return JSON.stringify(context);
+	});
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.w3-button')) {
+
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	};
+
+	/* When the user clicks on the button,
+	toggle between hiding and showing the detail content */
+	function detailFunct() {
+		var preview = document.getElementById("prev" + arguments[0].index);
+		var description = document.getElementById("description" + arguments[0].index);
+		var playButton = document.getElementById("play" + arguments[0].index);
+		// alert(arguments[0].index);
+		if (preview.style.display == "none")
+		{
+			preview.style.display = "block";
+			description.style.display = "none";
+			playButton.style.display = "block";
+		}
+		else
+		{
+			preview.style.display = "none";
+			description.style.display = "block";
+			playButton.style.display = "none";
+			historyVids.push(arguments[0]);
 			localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
+		}
+	};
 
-			document.getElementById("alerts").innerHTML = "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Created and added to " + nameP + "!</div>";
-			// document.getElementById("funfun" + arguments[0].index).innerHTML += nameList;
+	function goBack() {
+		window.history.back();
+	};
+
+	function showVid()
+	{
+		var src = arguments[0].video;
+		$('#vidmodal iframe').attr('src', src);
+		$('#vidmodal').modal('show');
+
+		document.getElementById("vidTitleMod").innerHTML = "" + arguments[0].title;
+
+		// add things to the history called historyOfVids in localStorage, history in code
+		historyVids.push(arguments[0]);
+		localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
+	};
+
+	//Open modal when user clicks on "create new playlist"
+	function openModal() {
+		$('#myModal').modal('show');
+		vidP = arguments[0];
+		//If the user clicks on "create" button, then call appendList
+		var createBtn = document.getElementById("createBtn");
+		createBtn.addEventListener('click', appendList);
+	}
+
+	function appendList() {
+		$('#myModal').modal('hide');
+
+		var newPlaylist = "";
+		var nameP = document.getElementById('inputName').value;
+		if (nameP == "") {	// of the user presses cancel
+			return;
+		}
+		if (nameP != "") {
+			newPlaylist = nameP;
+		}
+		var fullP = {
+			"name": nameP,
+			"vids": [vidP]
 		};
+		// if (playlists.length >= 1) {
+		// 	fullP = ", " + fullP;
+		// }
+		playlists.push(fullP);
+		localStorage.setItem("listsOfSets", JSON.stringify(playlists));
+		for (var i = 0; i < currListOfVids.length; i++) {
+			var nameList = "<li><a href=\"#\" onclick = \"addToPlaylistExisting('"+ nameP +"', " + (JSON.stringify(currListOfVids[i])).replace(/"/g, "'") + ")\">" + nameP + "</a></li>";
+			document.getElementById("funfun" + i).innerHTML += nameList;
+		}
+		$('#inputName').val('');
 
-		/* If the playlist already exists and we want to add the video to it */
-		function addToPlaylistExisting() {
-			// alert("" + arguments[0]);   // DEBUGGING
-			// alert(JSON.stringify(arguments[1]));  // DEBUGGING
-			var playlistName = "" + arguments[0]; // this is a string
-			var currentVideoData = arguments[1]; // this is the JS object with the title, video, prev, and description
+		historyVids.push(vidP);
+		localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
 
-			document.getElementById("toAddPlaylistText").innerHTML ="Add to " + playlistName + "?";
-			$('#confirmAddPlaylist').modal('show');
-			$('#addToPlaylistBtn').click(function() {
-				// add video to playlist
-				playlists.filter(function(obj) {
-					if (obj.name === playlistName) {
-						obj.vids.push(currentVideoData);
-					}
-				});
+		document.getElementById("alerts").innerHTML = "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" style=\"color:#000\" data-dismiss=\"alert\">x</button>Created and added to " + nameP + "!</div>";
+		// document.getElementById("funfun" + arguments[0].index).innerHTML += nameList;
+	};
 
-				// update the playlist in localStorage
-				localStorage.setItem("listsOfSets", JSON.stringify(playlists));
+	/* If the playlist already exists and we want to add the video to it */
+	function addToPlaylistExisting() {
+		// alert("" + arguments[0]);   // DEBUGGING
+		// alert(JSON.stringify(arguments[1]));  // DEBUGGING
+		var playlistName = "" + arguments[0]; // this is a string
+		var currentVideoData = arguments[1]; // this is the JS object with the title, video, prev, and description
 
-				// success notification and fade
-				document.getElementById("alerts").innerHTML = "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Added to " + playlistName + "!</div>";
+		document.getElementById("toAddPlaylistText").innerHTML ="Add to " + playlistName + "?";
+		$('#confirmAddPlaylist').modal('show');
+		$('#addToPlaylistBtn').click(function() {
+			// add video to playlist
+			playlists.filter(function(obj) {
+				if (obj.name === playlistName) {
+					obj.vids.push(currentVideoData);
+				}
 			});
 
 			// update the playlist in localStorage
-			historyVids.push(currentVideoData);
-			localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
+			localStorage.setItem("listsOfSets", JSON.stringify(playlists));
 
-		};
-	</script>
+			// success notification and fade
+			document.getElementById("alerts").innerHTML = "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" style=\"color:#000\" data-dismiss=\"alert\">x</button>Added to " + playlistName + "!</div>";
+		});
+
+		// update the playlist in localStorage
+		historyVids.push(currentVideoData);
+		localStorage.setItem("historyOfVids", JSON.stringify(historyVids));
+
+	};
+</script>
 </head>
 <body>
 <!-- collapsible navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<button class="navbar-btn float-sm-left" onclick="goBack()">
-		<
-	</button>
-	<a class="navbar-brand" href="targetareaF.html"> Limber</a>
-	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#limberNavBar" aria-controls="limberNavBar" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+<button class="navbar-btn float-sm-left" onclick="goBack()">
+	<
+</button>
+<a class="navbar-brand" href="targetareaF.html"> Limber</a>
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#limberNavBar" aria-controls="limberNavBar" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+</button>
 
-	<div class="collapse navbar-collapse" id="limberNavBar">
-		<div class="navbar-nav mr-auto mt-2 mt-md-0">
-			<a class="nav-item nav-link" href="targetareaF.html">Pick Target Area</a>
-			<a class="nav-item nav-link" href="playlistAll.html">My Exercise Sets</a>
-			<a class="nav-item nav-link" href="history.html">Video History</a>
-			<a class="nav-item nav-link" href="index.html">Log Out</a>
-		</div>
+<div class="collapse navbar-collapse" id="limberNavBar">
+	<div class="navbar-nav mr-auto mt-2 mt-md-0">
+		<a class="nav-item nav-link" href="targetareaF.html">Pick Target Area</a>
+		<a class="nav-item nav-link" href="playlistAll.html">My Exercise Sets</a>
+		<a class="nav-item nav-link" href="history.html">Video History</a>
+		<a class="nav-item nav-link" href="index.html">Log Out</a>
 	</div>
+</div>
 </nav>
 
 <body>
 <!-- section for defining modal tutorial at https://www.tutorialspoint.com/bootstrap/bootstrap_modal_plugin.htm something similar could be used for details function later-->
 <div class="modal modal-lg" id="vidmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="-webkit-transform: translate(0, -50%); -o-transform: translate(0, -50%); transform: translate(0, -50%); top: 50%; margin: 0 auto;">
-    <div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="vidTitleMod"></h5>
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			</div>
-      <div class="modal-body">
-        <iframe width="100%" height="100%" frameborder="0" allowfullscreen="" style="top: 0; left: 0; width:100%; height: 100%"></iframe>
-      </div>
-    </div>
-  </div>
+<div class="modal-dialog" style="-webkit-transform: translate(0, -50%); -o-transform: translate(0, -50%); transform: translate(0, -50%); top: 50%; margin: 0 auto;">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="vidTitleMod"></h5>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		</div>
+		<div class="modal-body">
+			<iframe width="100%" height="500%" frameborder="0" allowfullscreen="" style="border: 0; position: relative; top: 0; left:0; right:0; bottom:0; height: 40vh !important; max-width: 90vw !important;"></iframe>
+		</div>
+	</div>
+</div>
 </div>
 
 <div class="modal modal-lg" id="confirmAddPlaylist" tabindex="-1" role="dialog" aria-labelledby="conAddLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			</div>
-      <div class="modal-body">
-        <p id="toAddPlaylistText"></p>
-      </div>
-			<div class="modal-footer">
-				<button type="button" id="cancelAddbtn" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" id="addToPlaylistBtn" class="btn btn-primary" data-dismiss="modal">Add</button>
-			</div>
-    </div>
-  </div>
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		</div>
+		<div class="modal-body">
+			<p id="toAddPlaylistText"></p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" id="cancelAddbtn" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<button type="button" id="addToPlaylistBtn" class="btn btn-primary" data-dismiss="modal">Add</button>
+		</div>
+	</div>
+</div>
 </div>
 
 <!-- Hee Ro added this - modal to create new playlist -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Exercise Set</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-				<p>Insert new exercise set name below</p>
-				<input type="text" id="inputName" class="form-control" placeholder="Exercise set name">
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="cancelBtn" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" id="createBtn" class="btn btn-primary">Create</button>
-      </div>
-    </div>
-  </div>
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Create New Exercise Set</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<p>Insert new exercise set name below</p>
+			<input type="text" id="inputName" class="form-control" placeholder="Exercise set name">
+		</div>
+		<div class="modal-footer">
+			<button type="button" id="cancelBtn" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<button type="button" id="createBtn" class="btn btn-primary">Create</button>
+		</div>
+	</div>
+</div>
 </div>
 
 
 <div class="col">
-		<h1 style="font-size:25px; text-align:center !important">STRENGTH EXERCISES:</h1>
-		<div id="bodbod"></div>
-		<div id="alerts"></div>
-	<div class="col-ld-3 col-10">
-		<div id="stuff" ></div>
-		<script id="entry-template" type="text/x-handlebars-template">
-			<div>
-				{{#each this}}
-				<div class="row" style="padding: 5px;">
-					<div class="row">
-						<h3 style="font-size: 20px; border-bottom-style: solid; margin-left: 3px; width: 95vw;">{{title}}</h3>
+	<h1 style="font-size:25px; text-align:center !important">STRENGTH EXERCISES:</h1>
+	<div id="bodbod"></div>
+	<div id="alerts"></div>
+<div class="col-ld-3 col-10">
+	<div id="stuff" ></div>
+	<script id="entry-template" type="text/x-handlebars-template">
+		<div>
+			{{#each this}}
+			<div class="row" style="padding: 5px;">
+				<div class="row">
+					<h3 style="font-size: 20px; border-bottom-style: solid; margin-left: 3px; width: 95vw;">{{title}}</h3>
+				</div>
+				<div class="row">
+					<div class="col">
+						<img src={{prev}} style="width:100%; max-width:100%; max-height: 50vh !important;" id="prev{{index}}" onclick="showVid({{json this}})"></img>
+						<img src="images/overlaytext.png" style="position: absolute; top: 0%; right: 10%; max-width: 50vw;" onclick="showVid({{json this}})" id="play{{index}}"></img>
+						<p style="display:none;" id="description{{index}}">{{description}}</p>
 					</div>
-					<div class="row">
-						<div class="col">
-							<img src={{prev}} style="width:100%; height:100%" id="prev{{index}}" onclick="showVid({{json this}})"></img>
-							<img src="images/play.png" class="overlay_pic" onclick="showVid({{json this}})" id="play{{index}}"></img>
-							<p style="display:none;" id="description{{index}}">{{description}}</p>
+					<div class="col-2">
+						<div class="row">
+							<button onclick="detailFunct({{json this}})" class="detailbtn">Details</button>
 						</div>
-						<div class="col-2">
-							<div class="row">
-								<button onclick="detailFunct({{json this}})" class="detailbtn">Details</button>
-							</div>
-							<div class="row"> <!--onclick="dropdownFunct({{json this}})"-->
-								<button class="dropdown-toggle dropbtn btn" type="button" data-toggle="dropdown">Add To</button>
-								<div id="dropdown{{index}}" class="dropdown-content dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<div id="funfun{{index}}">
-										<ul id="playlistslist" class="list-unstyled">
+						<div class="row"> <!--onclick="dropdownFunct({{json this}})"-->
+							<button class="dropdown-toggle dropbtn btn" type="button" data-toggle="dropdown">Add To</button>
+							<div id="dropdown{{index}}" class="dropdown-content dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<div id="funfun{{index}}">
+									<ul id="playlistslist" class="list-unstyled">
 
-										</ul>
-									</div>
-									<a href="#" onclick="openModal({{json this}})">Create New Exercise Set</a>
+									</ul>
 								</div>
+								<a href="#" onclick="openModal({{json this}})">Create New Exercise Set</a>
 							</div>
+						</div>
+						<div class="row" style="width: 20vw;">
+							<p><b>Try:</b> </br>{{reps}} & {{sets}}</p>
 						</div>
 					</div>
 				</div>
-				{{/each}}
 			</div>
-		</script>
-	</div>
+			{{/each}}
+		</div>
+	</script>
+</div>
 </div>
 
 
